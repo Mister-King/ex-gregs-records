@@ -1,5 +1,5 @@
 /**
- * Headline
+ * Badge
  */
 
 @import '../variables';
@@ -13,7 +13,7 @@
 	font-weight: 400;
 	padding: 4px 8px;
 	margin: auto -10px 0 auto;
-	border-radius: 10px;
+	border-radius: $borderRadius;
 	position: relative;
 	overflow: hidden;
 

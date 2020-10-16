@@ -6,6 +6,7 @@ import styles from './Button.module.scss';
 const Button = props => {
   const {
     type,
+    variant,
     className,
     onClick,
     disabled,
@@ -21,6 +22,7 @@ const Button = props => {
           styles.button,
           {
             [styles[`button--${type}`]]: type,
+            [styles[`button--${variant}`]]: variant,
           },
           className,
         )

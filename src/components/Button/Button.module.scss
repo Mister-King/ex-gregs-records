@@ -15,7 +15,7 @@
 	text-decoration: none;
 
 	border: none;
-	border-radius: 10px;
+	border-radius: $borderRadius;
 
 	vertical-align: middle;
 	cursor: pointer;
@@ -28,7 +28,7 @@
 	-webkit-backface-visibility: hidden;
 
 	text-align: center;
-	transition: all map-get($timings, short) ease;
+	transition: all $transitionStyle;
 
 	&:hover {
 		background-color: map-get($colours, 'button-primary-hover');
@@ -37,7 +37,7 @@
 
 	&:focus {
 		outline: none;
-		box-shadow: 0 0 0 .2rem rgba(38,143,255,.5);
+		box-shadow: 0 0 0 .2rem map-get($colours, 'focus-outline');
 	}
 
 	&:active {
@@ -46,6 +46,19 @@
 
 	* + & {
 		margin-top: 2.5rem;
+	}
+
+	&--secondary {
+		background-color: map-get($colours, 'button-secondary');
+		color: map-get($colours, 'copy-button-secondary');
+
+		&:hover {
+			background-color: map-get($colours, 'button-secondary-hover');
+		}
+
+		&:active {
+			background-color: map-get($colours, 'button-secondary-active');
+		}
 	}
 
 	&[disabled],

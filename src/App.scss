@@ -6,7 +6,7 @@
 
 .screen-transition {
 	opacity: 1;
-	transition: all map-get($timings, long) ease;
+	transition: all $transitionStyleLong;
 
 	&-exit {
 		position: absolute;

@@ -20,11 +20,27 @@ $colours: (
 	'button-primary-active': #0062cc,
 	'copy-button-primary': #fff,
 
+	'button-secondary': #6c757d,
+	'button-secondary-hover': #212529,
+	'button-secondary-active': #545b62,
+	'copy-button-secondary': #fff,
+
+	'labels': #3c3c40,
+	'border-inactive': #cbd3d9,
+	'border-active': #3c3c40,
+
+	'error': #dc3545,
 	'alert': #fff3cd,
 	'copy-alert': #856404,
+
+	'focus-outline': rgba(38,143,255,.5),
 );
 
 $timings: (
 	long: 1s,
 	short: 0.2s
 );
+
+$borderRadius: 10px;
+$transitionStyle: map-get($timings, 'short') ease;
+$transitionStyleLong: map-get($timings, 'long') ease;

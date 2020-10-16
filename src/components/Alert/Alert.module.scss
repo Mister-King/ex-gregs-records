@@ -1,5 +1,5 @@
 /**
- * Headline
+ * Alert
  */
 
 @import '../variables';
@@ -11,6 +11,6 @@
 	background: map-get($colours, 'alert');
 	color: map-get($colours, 'copy-alert');
 	border: 1px solid darken(map-get($colours, 'alert'), 20%);
-	border-radius: 10px;
+	border-radius: $borderRadius;
 	text-align: center;
 }

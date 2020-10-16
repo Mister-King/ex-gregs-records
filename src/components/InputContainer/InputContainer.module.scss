@@ -1,0 +1,99 @@
+@import '../variables';
+
+.fieldset {
+	border: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+
+	& + & {
+		margin-top: 8px;
+	}
+}
+
+.label {
+	color: map-get($colours, 'labels');
+	display: block;
+	font-size: 1.2rem;
+	text-align: right;
+	margin-right: 10px;
+	flex-basis: 40px;
+	flex-shrink: 0;
+}
+
+.input {
+	color: map-get($colours, 'labels');
+	width: 100%;
+	border: 1px solid map-get($colours, 'border-inactive');
+	font-size: 1.2rem;
+	padding: .75rem 1rem;
+	resize: none;
+	border-radius: $borderRadius;
+	transition: all $transitionStyle;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+
+	&--select {
+		background: map-get($colours, 'shade');
+		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z' fill='rgba(117, 117, 117, 0.999)' /%3E%3C/svg%3E");
+		background-position: right .57143rem top .71429rem;
+		background-repeat: no-repeat;
+		padding-right: 3rem;
+		cursor: pointer;
+	}
+
+	&:focus {
+		outline: none;
+		border-color: map-get($colours, 'border-active');
+	}
+
+	&--error {
+		border-color: map-get($colours, 'error');
+	}
+}
+
+.inputContainer {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+
+	&__inner {
+		width: 100%;
+		display: flex;
+	}
+}
+
+.error {
+	display: block;
+	width: 100%;
+	font-size: 14px;
+	color: map-get($colours, 'error');
+	margin-top: 5px;
+	padding-left: 20px;
+	position: relative;
+
+	&:before,
+	&:after {
+		content: '';
+		background-color: map-get($colours, 'error');
+		display: block;
+		height: 11px;
+		width: 1px;
+
+		position: absolute;
+		left: 5px;
+		top: 50%;
+		margin-top: -5px;
+	}
+
+	&:before {
+		transform: rotate(45deg);
+	}
+
+	&:after {
+		transform: rotate(-45deg);
+	}
+}

@@ -1,10 +1,6 @@
-import React from 'react';
-import classNames from 'classnames';
-import Headline from '../Headline/Headline';
-import image from '../Logo/logo.svg';
-
-import styles from './Record.module.scss';
-import Badge from '../Badge/Badge';
+import React, { useState } from 'react';
+import RecordDetails from './RecordDetails/RecordDetails';
+import RecordEdit from './RecordEdit/RecordEdit';
 
 const Record = props => {
   const {
@@ -15,7 +11,8 @@ const Record = props => {
     updateRecord,
   } = props;
 
-  let recordImage = props.image || image;
+  const [editing, setEditing] = useState(false);
+
   let conditionText;
 
   switch (condition) {
@@ -38,32 +35,42 @@ const Record = props => {
       conditionText = 'N/A';
   }
 
+  const handleSubmit = newRecordData => {
+    console.log(newRecordData);
+  };
+
+  const handleCancel = () => {
+    setEditing(false);
+  };
+
+  const handleEdit = event => {
+    event.stopPropagation();
+    setEditing(true);
+  };
+
+  if (editing) {
+    return (
+      <RecordEdit
+        artist={artist}
+        album={album}
+        year={year}
+        condition={condition}
+        conditionText={conditionText}
+        handleSubmit={handleSubmit}
+        handleCancel={handleCancel}
+      />
+    )
+  }
+
   return (
-    <div className={styles.record}>
-      <img src={recordImage} className={styles.record__image} alt={album} />
-
-      <div className={styles.record__body}>
-        <Headline
-          type="tertiary"
-          className={styles.record__title}
-        >
-          {album}
-        </Headline>
-
-        <ul className={styles.record__details}>
-          <li>{artist.name}</li>
-          <li>{year}</li>
-        </ul>
-
-      </div>
-
-      <Badge
-        className={styles.record__condition}
-        type={condition}
-      >
-        {conditionText}
-      </Badge>
-    </div>
+    <RecordDetails
+      artist={artist}
+      album={album}
+      year={year}
+      condition={condition}
+      conditionText={conditionText}
+      handleEdit={handleEdit}
+    />
   );
 };
 
