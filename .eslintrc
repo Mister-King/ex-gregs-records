@@ -8,6 +8,12 @@
     "jsx-a11y"
   ],
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "arrow-body-style" : "warn",
+    "arrow-parens": "off",
+    "max-len": "off",
+    "react/destructuring-assignment": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/no-unescaped-entities": 0,
+    "react/prop-types": "off"
   }
 }
