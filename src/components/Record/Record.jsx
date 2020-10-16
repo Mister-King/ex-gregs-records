@@ -35,7 +35,7 @@ const Record = props => {
       conditionText = 'Mint';
       break;
     default:
-      conditionText = 'Unknown';
+      conditionText = 'N/A';
   }
 
   return (
