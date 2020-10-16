@@ -8,4 +8,17 @@ $colours: (
 	'shade': #cbd3d9,
 	'dark-grey': #3c3c40,
 	'copy': #19191f,
+
+	'button-primary': #007bff,
+	'button-primary-hover': #0069d9,
+	'button-primary-active': #0062cc,
+	'copy-button-primary': #fff,
+
+	'alert': #fff3cd,
+	'copy-alert': #856404,
+);
+
+$timings: (
+	long: 1s,
+	short: 0.2s
 );

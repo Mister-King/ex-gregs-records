@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 import styles from './Headline.module.scss';
 
@@ -15,7 +15,7 @@ const Headline = props => {
   return (
     <Component
       className={
-        classnames(
+        classNames(
           styles.headline,
           {
             [styles[`headline--${type}`]]: type,

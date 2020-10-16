@@ -5,7 +5,7 @@
 @import '../variables';
 
 .headline {
-	font-size: 32px;
+	font-size: 36px;
 	line-height: 40px;
 	font-weight: 700;
 	text-align: center;
@@ -14,12 +14,14 @@
 	&--secondary {
 		font-size: 24px;
 		line-height: 32px;
-		margin-bottom: 20px;
 	}
 
 	&--tertiary {
 		font-size: 16px;
 		line-height: 20px;
-		margin-bottom: 10px;
+	}
+
+	&--light {
+		font-weight: 300;
 	}
 }

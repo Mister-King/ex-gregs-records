@@ -1,0 +1,90 @@
+/**
+ * Button
+ */
+
+@import '../variables';
+
+.button {
+	display: inline-block;
+
+	margin: 0;
+	padding: 1.4rem 1.4rem;
+
+	background-color: map-get($colours, 'button-primary');
+	color: map-get($colours, 'copy-button-primary');
+	text-decoration: none;
+
+	border: none;
+	border-radius: 10px;
+
+	vertical-align: middle;
+	cursor: pointer;
+
+	font-weight: 400;
+	font-size: 1.6rem;
+	line-height: 1.6rem;
+
+	-webkit-perspective: 1000;
+	-webkit-backface-visibility: hidden;
+
+	text-align: center;
+	transition: all map-get($timings, short) ease;
+
+	&:hover {
+		background-color: map-get($colours, 'button-primary-hover');
+		text-decoration: none;
+	}
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 0 .2rem rgba(38,143,255,.5);
+	}
+
+	&:active {
+		background-color: map-get($colours, 'button-primary-active');
+	}
+
+	* + & {
+		margin-top: 2.5rem;
+	}
+
+	&[disabled],
+	&--disabled {
+		pointer-events: none;
+		opacity: 0.5;
+	}
+
+	&--full {
+		width: 100%;
+		display: block;
+	}
+
+	/* Style as a text link */
+	&--text {
+
+		&[class] {
+			background: none;
+			box-shadow: none;
+
+			display: inline-block;
+			width: auto;
+			height: auto;
+			//min-height: 0;
+			padding: 0;
+
+			text-align: left;
+			text-transform: none;
+
+			&,
+			&:hover,
+			&:focus {
+				background: none;
+			}
+
+			&:hover,
+			&:focus {
+				text-decoration: underline;
+			}
+		}
+	}
+}

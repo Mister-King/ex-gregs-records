@@ -1,0 +1,29 @@
+/**
+ * Logo
+ */
+
+@import '../variables';
+
+.logo {
+	width: 40px;
+	height: 40px;
+	display: block;
+	margin-right: 10px;
+
+	&--large {
+		width: 300px;
+		height: 300px;
+		margin: 0 auto 20px;
+	}
+
+	&--animated {
+		animation: spin 2s ease infinite;
+	}
+}
+
+@keyframes spin {
+
+	0% { transform: rotate(0deg); }
+
+	100% { transform: rotate(-360deg); }
+}

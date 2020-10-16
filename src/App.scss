@@ -1,0 +1,17 @@
+/**
+ * App
+ */
+
+@import './components/variables';
+
+.screen-transition {
+	opacity: 1;
+	transition: all map-get($timings, long) ease;
+
+	&-exit {
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+	}
+}

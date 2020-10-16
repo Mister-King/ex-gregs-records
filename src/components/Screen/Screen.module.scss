@@ -1,0 +1,48 @@
+/**
+ * Screen
+ */
+
+@import '../variables';
+
+.screen {
+	background: map-get($colours, 'background');
+	width: 100%;
+	height: 100%;
+
+	&--full {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	&-exit {
+		opacity: 0;
+	}
+}
+
+.header {
+	height: 100px;
+	padding: 10px 40px;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.body {
+	height: calc(100vh - 100px);
+	padding: 40px;
+}
+
+.logo {
+	margin-right: 10px;
+
+	&--large {
+		margin: 0 0 40px;
+	}
+}
+
+.headline[class] {
+	color: map-get($colours, 'dark-grey');
+}

@@ -1,0 +1,16 @@
+/**
+ * Headline
+ */
+
+@import '../variables';
+
+.alert {
+	width: 100%;
+	max-width: 500px;
+	padding: 20px;
+	background: map-get($colours, 'alert');
+	color: map-get($colours, 'copy-alert');
+	border: 1px solid darken(map-get($colours, 'alert'), 20%);
+	border-radius: 10px;
+	text-align: center;
+}
