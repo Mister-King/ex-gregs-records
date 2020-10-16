@@ -8,13 +8,10 @@ import styles from './ScreenHome.module.scss';
 
 const ScreenHome = ({ setShowPage, setRecords }) => {
   const [loading, setLoading] = useState(true);
-  const [nextView, setNextView] = useState('');
 
   const logo = useRef(null);
 
-  console.log(nextView);
-
-  const handleLoaded = () => {
+  const handleLoaded = nextView => {
     setLoading(false);
     setTimeout(() => {
       setShowPage(nextView);
@@ -23,24 +20,24 @@ const ScreenHome = ({ setShowPage, setRecords }) => {
 
   useEffect(() => {
     const logoRef = logo;
+    let nextView;
 
     new Promise((resolve, reject) => {
       getRecords([], resolve, reject);
     })
       .then(response => {
         setRecords(response);
-        setNextView('list');
+        nextView = 'list';
       })
-      .catch((error) => {
-        console.log(error);
-        setNextView('error');
+      .catch(() => {
+        nextView = 'error';
       })
       .finally(() => {
-        logoRef.current.addEventListener('animationiteration', handleLoaded);
+        logoRef.current.addEventListener('animationiteration', () => handleLoaded(nextView));
       });
 
     return function cleanup() {
-      logoRef.current.removeEventListener('animationiteration', handleLoaded);
+      logoRef.current.removeEventListener('animationiteration', () => handleLoaded(nextView));
     };
   }, []);
 
