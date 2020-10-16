@@ -3,7 +3,15 @@ import classNames from 'classnames';
 
 import styles from './Button.module.scss';
 
-const Button = ({ type, className, onClick, disabled, children }) => {
+const Button = props => {
+  const {
+    type,
+    className,
+    onClick,
+    disabled,
+    children,
+  } = props;
+
   return (
     <button
       type="button"

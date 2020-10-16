@@ -1,0 +1,43 @@
+/**
+ * Record
+ */
+
+@import '../variables';
+
+.record {
+	flex-basis: 50%;
+	min-width: 400px;
+	max-width: 400px;
+	padding: 20px;
+	margin: 10px;
+	border-radius: 10px;
+	border: 1px solid map-get($colours, 'dark-grey');
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+
+	&__image {
+		width: 50px;
+		height: 50px;
+		margin-right: 20px;
+	}
+
+	&__title {
+		text-align: left;
+	}
+
+	&__details {
+		list-style: none;
+		margin: 0 10px 0 0;
+		padding: 0;
+
+		li {
+			margin-top: 4px;
+			font-size: 1.4rem;
+		}
+	}
+
+	&__condition {
+		margin: auto -10px 0 auto;
+	}
+}

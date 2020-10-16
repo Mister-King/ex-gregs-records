@@ -48,7 +48,7 @@ const ScreenHome = ({ setShowPage, setRecords }) => {
         large
         ref={logo}
       />
-      <Headline type="light" className={styles.headline}>Greg's Records</Headline>
+      <Headline className={styles.headline}>Greg's Records</Headline>
     </>
   );
 };

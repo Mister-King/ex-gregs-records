@@ -27,6 +27,8 @@ const App = () => {
       DisplayScreen = ScreenError;
   }
 
+  console.log(records);
+
   return (
     <TransitionGroup component={null}>
       <CSSTransition
@@ -38,6 +40,7 @@ const App = () => {
           <DisplayScreen
             setShowPage={setShowPage}
             setRecords={setRecords}
+            records={records}
             retry={handleRetry}
           />
         </Screen>

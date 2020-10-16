@@ -5,11 +5,20 @@
 @import '../variables';
 
 .headline {
+	margin: 0;
 	font-size: 36px;
 	line-height: 40px;
-	font-weight: 700;
+	font-weight: 300;
 	text-align: center;
 	color: map-get($colours, 'copy');
+
+	* + & {
+		margin-top: 40px;
+	}
+
+	& + & {
+		margin-top: 20px;
+	}
 
 	&--secondary {
 		font-size: 24px;
@@ -19,9 +28,6 @@
 	&--tertiary {
 		font-size: 16px;
 		line-height: 20px;
-	}
-
-	&--light {
-		font-weight: 300;
+		font-weight: 400;
 	}
 }

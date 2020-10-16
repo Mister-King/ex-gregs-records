@@ -1,0 +1,63 @@
+/**
+ * Headline
+ */
+
+@import '../variables';
+
+.badge {
+	min-width: 45px;
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 400;
+	padding: 4px 8px;
+	margin: auto -10px 0 auto;
+	border-radius: 10px;
+	position: relative;
+	overflow: hidden;
+
+	&--poor {
+		background: map-get($colours, 'poor');
+		color: map-get($colours, 'white');
+	}
+
+	&--fair {
+		background: map-get($colours, 'fair');
+		color: map-get($colours, 'white');
+	}
+
+	&--good {
+		background: map-get($colours, 'good');
+		color: map-get($colours, 'white');
+	}
+
+	&--very_good {
+		background: map-get($colours, 'very_good');
+		color: map-get($colours, 'white');
+	}
+
+	&--mint {
+		background: map-get($colours, 'mint');
+		color: map-get($colours, 'white');
+	}
+
+	&__starburst {
+		position: absolute;
+		width: 100px;
+		height: 100px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		animation: burst 10s linear infinite;
+	}
+
+	&__starburst-text {
+		position: relative;
+	}
+}
+
+@keyframes burst {
+
+	0% { transform: translate(-50%, -50%) rotate(0deg); }
+
+	100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
