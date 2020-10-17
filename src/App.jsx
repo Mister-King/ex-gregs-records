@@ -31,7 +31,7 @@ const App = () => {
     <TransitionGroup component={null}>
       <CSSTransition
         key={showPage}
-        timeout={1300}
+        timeout={1000}
         classNames="screen-transition"
       >
         <Screen className="screen-transition" full={showPage === 'home'}>
