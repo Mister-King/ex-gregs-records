@@ -23,3 +23,53 @@
 	margin: 20px auto;
 	max-width: 400px;
 }
+
+.pagination {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 20px auto;
+
+	&__item {
+		width: 30px;
+		height: 30px;
+		overflow: hidden;
+
+		&:first-child {
+			border-radius: $borderRadius 0 0 $borderRadius;
+		}
+
+		&:last-child {
+			border-radius: 0 $borderRadius $borderRadius 0;
+		}
+	}
+
+	&__link {
+		background: map-get($colours, 'background');
+		color: map-get($colours, 'copy');
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		font-size: 1.4rem;
+		font-weight: 400;
+		transition: background $transitionStyle;
+
+		&:hover,
+		&:focus {
+			background: map-get($colours, 'shade');
+		}
+
+		&:active {
+			background: darken(map-get($colours, 'shade'), 5%);
+		}
+
+		&--active {
+			background: map-get($colours, 'button-primary');
+			color: map-get($colours, 'white');
+		}
+	}
+}

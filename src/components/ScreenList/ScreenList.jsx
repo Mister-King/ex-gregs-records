@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import FilterResults from 'react-filter-search';
+import Pagination from 'react-js-pagination';
 import Headline from '../Headline/Headline';
 import Record from '../Record/Record';
 
@@ -8,6 +9,8 @@ import InputContainer from '../InputContainer/InputContainer';
 
 const ScreenList = ({ records, setRecords }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [activePage, setActivePage] = useState(1);
+  const [limit, setLimit] = useState(10);
 
   const handleUpdateRecord = (recordIndex, editedRecord) => {
     const updatedRecords = records;
@@ -31,6 +34,11 @@ const ScreenList = ({ records, setRecords }) => {
     setSearchTerm(event.target.value);
   };
 
+  const handlePageChange = pageNumber => {
+    console.log(`active page is ${pageNumber}`);
+    setActivePage(pageNumber);
+  };
+
   return (
     <>
       <Headline>Records List</Headline>
@@ -50,25 +58,40 @@ const ScreenList = ({ records, setRecords }) => {
           value={searchTerm}
           data={records}
           renderResults={results => (
-            <div className={styles.recordlist}>
-              { !results.length
-                ? (
-                  <Headline className={styles.recordlist__empty} type="secondary">No results</Headline>
-                )
-                : (
-                  results.map((record, i) => (
-                    <Record
-                      key={`record-${i}`}
-                      artist={record.artist}
-                      album={record.album_title}
-                      year={record.year}
-                      condition={record.condition}
-                      recordIndex={i}
-                      updateRecord={handleUpdateRecord}
-                    />
-                  ))
-                )}
-            </div>
+            <>
+              <div className={styles.recordlist}>
+                { !results.length
+                  ? (
+                    <Headline className={styles.recordlist__empty} type="secondary">No results</Headline>
+                  )
+                  : (
+                    results.map((record, i) => (
+                      <Record
+                        key={`record-${i}`}
+                        artist={record.artist}
+                        album={record.album_title}
+                        year={record.year}
+                        condition={record.condition}
+                        recordIndex={i}
+                        updateRecord={handleUpdateRecord}
+                      />
+                    ))
+                  )}
+              </div>
+
+              <Pagination
+                activePage={activePage}
+                itemsCountPerPage={10}
+                totalItemsCount={results.length}
+                pageRangeDisplayed={5}
+                onChange={handlePageChange}
+                innerClass={styles.pagination}
+                itemClass={styles.pagination__item}
+                linkClass={styles.pagination__link}
+                activeLinkClass={`${styles.pagination__link} ${styles['pagination__link--active']}`}
+                hideDisabled
+              />
+            </>
           )}
         />
       </form>
