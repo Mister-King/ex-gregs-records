@@ -79,18 +79,19 @@ const ScreenList = ({ records, setRecords }) => {
                   )}
               </div>
 
-              <Pagination
-                activePage={activePage}
-                itemsCountPerPage={10}
-                totalItemsCount={results.length}
-                pageRangeDisplayed={5}
-                onChange={handlePageChange}
-                innerClass={styles.pagination}
-                itemClass={styles.pagination__item}
-                linkClass={styles.pagination__link}
-                activeLinkClass={`${styles.pagination__link} ${styles['pagination__link--active']}`}
-                hideDisabled
-              />
+              { results.length > 1
+              && (
+                <Pagination
+                  activePage={activePage}
+                  itemsCountPerPage={10}
+                  totalItemsCount={results.length}
+                  onChange={handlePageChange}
+                  innerClass={styles.pagination}
+                  itemClass={styles.pagination__item}
+                  linkClass={styles.pagination__link}
+                  activeLinkClass={`${styles.pagination__link} ${styles['pagination__link--active']}`}
+                />
+              )}
             </>
           )}
         />
