@@ -11,7 +11,7 @@
 	padding: 20px;
 	margin: 10px;
 	border-radius: $borderRadius;
-	border: 1px solid map-get($colours, 'dark-grey');
+	border: 1px solid map-get($colours, 'shade');
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
@@ -52,6 +52,24 @@
 
 	&__condition {
 		margin: auto -10px 0 auto;
+	}
+}
+
+.record-transition {
+	opacity: 1;
+	transition: opacity $transitionStyleShort;
+
+	&[class*='exit'] {
+		opacity: 0;
+	}
+
+	&[class*='enter'] {
+		opacity: 0;
+	}
+
+	&[class*='enter-active'],
+	&[class*='enter-done'] {
+		opacity: 1;
 	}
 }
 

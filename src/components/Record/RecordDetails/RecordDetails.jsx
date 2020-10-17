@@ -1,11 +1,11 @@
 import React from 'react';
 import Headline from '../../Headline/Headline';
 import Badge from '../../Badge/Badge';
+import Button from '../../Button/Button';
 import image from '../../Logo/logo.svg';
 import editIcon from '../edit-icon.svg';
 
 import styles from '../Record.module.scss';
-import Button from '../../Button/Button';
 
 const RecordDetails = props => {
   const {

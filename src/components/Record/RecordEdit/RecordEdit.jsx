@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import { isFormValid } from '../../../utils/FormHandlers';
 
 import Button from '../../Button/Button';
@@ -10,6 +11,7 @@ import styles from '../Record.module.scss';
 
 const RecordEdit = props => {
   const {
+    className,
     record,
     handleCancel,
     toggleEdit,
@@ -68,7 +70,15 @@ const RecordEdit = props => {
   };
 
   return (
-    <div className={`${styles.record} ${styles['record--edit']}`}>
+    <div
+      className={classNames(
+        styles.record,
+        styles['record--edit'],
+        {
+          className,
+        },
+      )}
+    >
       <img src={recordImage} className={styles.record__image} alt={newRecord.album_title} />
 
       <form className={styles.form} onSubmit={handleSubmit}>

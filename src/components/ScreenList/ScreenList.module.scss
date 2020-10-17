@@ -76,3 +76,21 @@
 		}
 	}
 }
+
+.filter-transition {
+	opacity: 1;
+	transition: opacity $transitionStyleShort;
+
+	&[class*='exit'] {
+		opacity: 0;
+	}
+
+	&[class*='enter'] {
+		opacity: 0;
+	}
+
+	&[class*='enter-active'],
+	&[class*='enter-done'] {
+		opacity: 1;
+	}
+}

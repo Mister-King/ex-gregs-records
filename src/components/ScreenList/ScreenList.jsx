@@ -6,6 +6,7 @@ import Record from '../Record/Record';
 
 import styles from './ScreenList.module.scss';
 import InputContainer from '../InputContainer/InputContainer';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 const ScreenList = ({ records, setRecords }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -67,18 +68,29 @@ const ScreenList = ({ records, setRecords }) => {
         handleInputChange={handleInputChange}
       />
 
+
       <FilterResults
         value={searchTerm}
         data={records}
         renderResults={results => (
           <>
-            <div className={styles.recordlist}>
-              { !results.length
-                ? <Headline className={styles.recordlist__empty} type="secondary">No results</Headline>
-                : renderPage(results)}
-            </div>
+            <SwitchTransition component={null}>
+              <CSSTransition
+                key={activePage}
+                timeout={100}
+                classNames={styles['filter-transition']}
+              >
+                <div className={styles['filter-transition']}>
+                  <div className={styles.recordlist}>
+                    {!results.length
+                      ? <Headline className={styles.recordlist__empty} type="secondary">No results</Headline>
+                      : renderPage(results)}
+                  </div>
+                </div>
+              </CSSTransition>
+            </SwitchTransition>
 
-            { results.length > limit
+            {results.length > limit
             && (
               <Pagination
                 activePage={activePage}

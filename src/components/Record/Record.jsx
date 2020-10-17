@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import RecordDetails from './RecordDetails/RecordDetails';
 import RecordEdit from './RecordEdit/RecordEdit';
+
 import Conditions from '../../config/Conditions.json';
+
+import styles from './Record.module.scss';
 
 const Record = props => {
   const {
@@ -26,25 +30,35 @@ const Record = props => {
     setEditing(!editing);
   };
 
-  if (editing) {
-    return (
-      <RecordEdit
-        record={record}
-        conditionText={conditionText}
-        recordIndex={recordIndex}
-        updateRecord={updateRecord}
-        toggleEdit={toggleEdit}
-        handleCancel={handleCancel}
-      />
-    );
-  }
-
   return (
-    <RecordDetails
-      record={record}
-      conditionText={conditionText}
-      toggleEdit={toggleEdit}
-    />
+    <SwitchTransition component={null}>
+      <CSSTransition
+        key={editing}
+        timeout={100}
+        classNames={styles['record-transition']}
+      >
+        <div className={styles['record-transition']}>
+          {editing
+            ? (
+              <RecordEdit
+                record={record}
+                conditionText={conditionText}
+                recordIndex={recordIndex}
+                updateRecord={updateRecord}
+                toggleEdit={toggleEdit}
+                handleCancel={handleCancel}
+              />
+            )
+            : (
+              <RecordDetails
+                record={record}
+                conditionText={conditionText}
+                toggleEdit={toggleEdit}
+              />
+            )}
+        </div>
+      </CSSTransition>
+    </SwitchTransition>
   );
 };
 
