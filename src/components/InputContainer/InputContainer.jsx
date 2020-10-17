@@ -34,6 +34,7 @@ const InputContainer = props => {
           )
         }
         type={props.type}
+        placeholder={props.placeholder}
         id={props.name}
         name={props.name}
         value={props.value}
