@@ -13,8 +13,11 @@ An exercise for a React app to display Hipster Greg's record collection.
 
 # Setup
 
+#### Dependencies
+You must create a `.env` file in the project's root folder based on the `.env.example` file included in the repository.
+
 #### Installation
-Run the following commands from a terminal in the project folder:
+Run the following commands from a terminal in the project's root folder:
 - `npm ci` creates a fresh install of all required packages.
 - `npm start` starts the development server at [http://localhost:3000](http://localhost:3000).
 - `npm run build` creates an optimized production build
@@ -25,5 +28,6 @@ Of course you can also use `yarn`.
 To be continued...
 
 # Notes
+- The error `findDOMNode is deprecated in StrictMode` is thrown from `CSSTransition` in the `react-transition-group` package. From what I've seen, there's no fix for this.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
