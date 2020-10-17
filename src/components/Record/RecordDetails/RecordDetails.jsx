@@ -9,10 +9,7 @@ import Button from '../../Button/Button';
 
 const RecordDetails = props => {
   const {
-    artist,
-    album,
-    year,
-    condition,
+    record,
     conditionText,
     toggleEdit,
   } = props;
@@ -26,19 +23,19 @@ const RecordDetails = props => {
       className={styles.record}
       onClick={toggleEdit}
     >
-      <img src={recordImage} className={styles.record__image} alt={album} />
+      <img src={recordImage} className={styles.record__image} alt={record.album_title} />
 
       <div className={styles.record__body}>
         <Headline
           type="tertiary"
           className={styles.record__title}
         >
-          {album}
+          {record.album_title}
         </Headline>
 
         <ul className={styles.record__details}>
-          <li>{artist.name}</li>
-          <li>{year}</li>
+          <li>{record.artist.name}</li>
+          <li>{record.year}</li>
         </ul>
 
       </div>
@@ -57,7 +54,7 @@ const RecordDetails = props => {
 
       <Badge
         className={styles.record__condition}
-        type={condition}
+        type={record.condition}
       >
         {conditionText}
       </Badge>

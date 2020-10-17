@@ -10,40 +10,29 @@ import styles from '../Record.module.scss';
 
 const RecordEdit = props => {
   const {
-    artist,
-    album,
-    year,
-    condition,
-    conditionText,
-    recordIndex,
+    record,
     handleCancel,
     toggleEdit,
     updateRecord,
   } = props;
 
   const [formErrors, setFormErrors] = useState({});
-  const [record, setRecord] = useState({
-    artist,
-    album,
-    year,
-    condition,
-    conditionText,
-  });
+  const [newRecord, setNewRecord] = useState(record);
 
   const recordImage = props.image || image;
 
   const handleInputChange = event => {
     if (event.target.name === 'artist') {
-      setRecord({
-        ...record,
+      setNewRecord({
+        ...newRecord,
         artist: {
-          ...record.artist,
+          ...newRecord.artist,
           name: event.target.value,
         },
       });
     } else {
-      setRecord({
-        ...record,
+      setNewRecord({
+        ...newRecord,
         [event.target.name]: event.target.value,
       });
     }
@@ -63,10 +52,7 @@ const RecordEdit = props => {
       return false;
     }
 
-    const formattedRecord = record;
-    formattedRecord.album_title = formattedRecord.album;
-
-    updateRecord(recordIndex, formattedRecord);
+    updateRecord(record, newRecord);
     toggleEdit();
     return true;
   };
@@ -83,18 +69,18 @@ const RecordEdit = props => {
 
   return (
     <div className={`${styles.record} ${styles['record--edit']}`}>
-      <img src={recordImage} className={styles.record__image} alt={album} />
+      <img src={recordImage} className={styles.record__image} alt={newRecord.album_title} />
 
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.record__body}>
           <InputContainer
             label="Album"
-            name="album"
+            name="album_title"
             type="text"
-            value={record.album}
+            value={newRecord.album_title}
             handleInputChange={handleInputChange}
             handleInputBlur={handleInputBlur}
-            error={formErrors.album}
+            error={formErrors.album_title}
             required
           />
 
@@ -102,7 +88,7 @@ const RecordEdit = props => {
             label="Artist"
             name="artist"
             type="text"
-            value={record.artist.name}
+            value={newRecord.artist.name}
             handleInputChange={handleInputChange}
             handleInputBlur={handleInputBlur}
             error={formErrors.artist}
@@ -115,7 +101,7 @@ const RecordEdit = props => {
               label="Year"
               name="year"
               type="number"
-              value={record.year}
+              value={newRecord.year}
               handleInputChange={handleInputChange}
               handleInputBlur={handleInputBlur}
               error={formErrors.year}
@@ -127,7 +113,7 @@ const RecordEdit = props => {
               label="Condition"
               name="condition"
               type="select"
-              value={record.condition}
+              value={newRecord.condition}
               handleInputChange={handleInputChange}
               handleInputBlur={handleInputBlur}
               error={formErrors.condition}

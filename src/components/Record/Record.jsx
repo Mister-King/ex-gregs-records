@@ -4,10 +4,7 @@ import RecordEdit from './RecordEdit/RecordEdit';
 
 const Record = props => {
   const {
-    artist,
-    album,
-    year,
-    condition,
+    record,
     recordIndex,
     updateRecord,
   } = props;
@@ -51,10 +48,7 @@ const Record = props => {
   if (editing) {
     return (
       <RecordEdit
-        artist={artist}
-        album={album}
-        year={year}
-        condition={condition}
+        record={record}
         conditionText={conditionText}
         recordIndex={recordIndex}
         updateRecord={updateRecord}
@@ -66,10 +60,7 @@ const Record = props => {
 
   return (
     <RecordDetails
-      artist={artist}
-      album={album}
-      year={year}
-      condition={condition}
+      record={record}
       conditionText={conditionText}
       toggleEdit={toggleEdit}
     />

@@ -34,13 +34,12 @@
 	&__item {
 		width: 30px;
 		height: 30px;
-		overflow: hidden;
 
-		&:first-child {
+		&:first-child a {
 			border-radius: $borderRadius 0 0 $borderRadius;
 		}
 
-		&:last-child {
+		&:last-child a {
 			border-radius: 0 $borderRadius $borderRadius 0;
 		}
 	}

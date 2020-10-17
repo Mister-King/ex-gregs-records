@@ -10,13 +10,15 @@ import InputContainer from '../InputContainer/InputContainer';
 const ScreenList = ({ records, setRecords }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activePage, setActivePage] = useState(1);
-  const [limit, setLimit] = useState(10);
 
-  const handleUpdateRecord = (recordIndex, editedRecord) => {
+  const limit = 10;
+
+  const handleUpdateRecord = (originalRecord, editedRecord) => {
     const updatedRecords = records;
-    updatedRecords[recordIndex] = editedRecord;
+    const originalIndex = records.findIndex(record => record === originalRecord);
+    updatedRecords[originalIndex] = editedRecord;
 
-    const originalArtist = records[recordIndex].artist;
+    const originalArtist = records[originalIndex].artist;
     const updatedArtist = editedRecord.artist;
 
     if (originalArtist.name !== updatedArtist) {
@@ -32,70 +34,66 @@ const ScreenList = ({ records, setRecords }) => {
 
   const handleInputChange = event => {
     setSearchTerm(event.target.value);
+    setActivePage(1);
   };
 
   const handlePageChange = pageNumber => {
-    console.log(`active page is ${pageNumber}`);
     setActivePage(pageNumber);
+  };
+
+  const renderPage = results => {
+    const pageResults = results.slice(activePage * limit - limit, activePage * limit);
+
+    return pageResults.map((record, i) => (
+      <Record
+        key={`record-${i}`}
+        record={record}
+        updateRecord={handleUpdateRecord}
+      />
+    ));
   };
 
   return (
     <>
       <Headline>Records List</Headline>
-      <Headline type="tertiary">Page 1</Headline>
 
-      <form onSubmit={() => null}>
-        <InputContainer
-          containerClassName={styles.search}
-          label="Search"
-          name="search"
-          type="text"
-          value={searchTerm}
-          handleInputChange={handleInputChange}
-        />
+      <InputContainer
+        containerClassName={styles.search}
+        label="Search"
+        name="search"
+        type="text"
+        placeholder="e.g. Steel Panther"
+        value={searchTerm}
+        handleInputChange={handleInputChange}
+      />
 
-        <FilterResults
-          value={searchTerm}
-          data={records}
-          renderResults={results => (
-            <>
-              <div className={styles.recordlist}>
-                { !results.length
-                  ? (
-                    <Headline className={styles.recordlist__empty} type="secondary">No results</Headline>
-                  )
-                  : (
-                    results.map((record, i) => (
-                      <Record
-                        key={`record-${i}`}
-                        artist={record.artist}
-                        album={record.album_title}
-                        year={record.year}
-                        condition={record.condition}
-                        recordIndex={i}
-                        updateRecord={handleUpdateRecord}
-                      />
-                    ))
-                  )}
-              </div>
+      <FilterResults
+        value={searchTerm}
+        data={records}
+        renderResults={results => (
+          <>
+            <div className={styles.recordlist}>
+              { !results.length
+                ? <Headline className={styles.recordlist__empty} type="secondary">No results</Headline>
+                : renderPage(results)}
+            </div>
 
-              { results.length > 1
-              && (
-                <Pagination
-                  activePage={activePage}
-                  itemsCountPerPage={10}
-                  totalItemsCount={results.length}
-                  onChange={handlePageChange}
-                  innerClass={styles.pagination}
-                  itemClass={styles.pagination__item}
-                  linkClass={styles.pagination__link}
-                  activeLinkClass={`${styles.pagination__link} ${styles['pagination__link--active']}`}
-                />
-              )}
-            </>
-          )}
-        />
-      </form>
+            { results.length > limit
+            && (
+              <Pagination
+                activePage={activePage}
+                itemsCountPerPage={limit}
+                totalItemsCount={results.length}
+                onChange={handlePageChange}
+                innerClass={styles.pagination}
+                itemClass={styles.pagination__item}
+                linkClass={styles.pagination__link}
+                activeLinkClass={`${styles.pagination__link} ${styles['pagination__link--active']}`}
+              />
+            )}
+          </>
+        )}
+      />
     </>
   );
 };
