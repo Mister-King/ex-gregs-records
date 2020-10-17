@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { isFormValid } from '../../../utils/FormHandlers';
+
 import Button from '../../Button/Button';
 import InputContainer from '../../InputContainer/InputContainer';
 import image from '../../Logo/logo.svg';
@@ -13,8 +15,10 @@ const RecordEdit = props => {
     year,
     condition,
     conditionText,
-    handleSubmit,
+    recordIndex,
     handleCancel,
+    toggleEdit,
+    updateRecord,
   } = props;
 
   const [formErrors, setFormErrors] = useState({});
@@ -30,7 +34,13 @@ const RecordEdit = props => {
 
   const handleInputChange = event => {
     if (event.target.name === 'artist') {
-      console.log('do something else');
+      setRecord({
+        ...record,
+        artist: {
+          ...record.artist,
+          name: event.target.value,
+        },
+      });
     } else {
       setRecord({
         ...record,
@@ -44,6 +54,21 @@ const RecordEdit = props => {
       ...formErrors,
       [event.target.name]: !event.target.value,
     });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    if (!isFormValid(formErrors)) {
+      return false;
+    }
+
+    const formattedRecord = record;
+    formattedRecord.album_title = formattedRecord.album;
+
+    updateRecord(recordIndex, formattedRecord);
+    toggleEdit();
+    return true;
   };
 
   const renderConditionOpts = () => {
@@ -122,20 +147,13 @@ const RecordEdit = props => {
             </Button>
 
             <Button
-              onClick={handleSubmit}
+              type="submit"
               className={styles.form__button}
             >
               Submit
             </Button>
           </div>
         </div>
-
-      {/*<Badge*/}
-      {/*  className={styles.record__condition}*/}
-      {/*  type={condition}*/}
-      {/*>*/}
-      {/*  {conditionText}*/}
-      {/*</Badge>*/}
       </form>
     </div>
   );

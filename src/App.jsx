@@ -27,8 +27,6 @@ const App = () => {
       DisplayScreen = ScreenError;
   }
 
-  console.log(records);
-
   return (
     <TransitionGroup component={null}>
       <CSSTransition

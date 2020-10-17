@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { getRecords } from '../../utils/api';
+import { getRecords } from '../../utils/Api';
 
 import Logo from '../Logo/Logo';
 import Headline from '../Headline/Headline';
@@ -11,14 +11,14 @@ const ScreenHome = ({ setShowPage, setRecords }) => {
 
   const logo = useRef(null);
 
-  const handleLoaded = nextView => {
-    setLoading(false);
-    setTimeout(() => {
-      setShowPage(nextView);
-    }, 300);
-  };
-
   useEffect(() => {
+    const handleLoaded = nextView => {
+      setLoading(false);
+      setTimeout(() => {
+        setShowPage(nextView);
+      }, 300);
+    };
+
     const logoRef = logo;
     let nextView;
 
@@ -39,7 +39,7 @@ const ScreenHome = ({ setShowPage, setRecords }) => {
     return function cleanup() {
       logoRef.current.removeEventListener('animationiteration', () => handleLoaded(nextView));
     };
-  }, []);
+  }, [setRecords, setShowPage]);
 
   return (
     <>

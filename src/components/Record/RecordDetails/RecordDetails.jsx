@@ -14,7 +14,7 @@ const RecordDetails = props => {
     year,
     condition,
     conditionText,
-    handleEdit,
+    toggleEdit,
   } = props;
 
   const recordImage = props.image || image;
@@ -24,7 +24,7 @@ const RecordDetails = props => {
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <div
       className={styles.record}
-      onClick={handleEdit}
+      onClick={toggleEdit}
     >
       <img src={recordImage} className={styles.record__image} alt={album} />
 
@@ -45,8 +45,8 @@ const RecordDetails = props => {
 
       <Button
         className={styles.edit}
-        type="text"
-        onClick={handleEdit}
+        variant="text"
+        onClick={toggleEdit}
       >
         <img
           src={editIcon}

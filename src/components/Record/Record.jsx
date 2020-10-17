@@ -8,6 +8,7 @@ const Record = props => {
     album,
     year,
     condition,
+    recordIndex,
     updateRecord,
   } = props;
 
@@ -35,17 +36,16 @@ const Record = props => {
       conditionText = 'N/A';
   }
 
-  const handleSubmit = newRecordData => {
-    console.log(newRecordData);
-  };
-
   const handleCancel = () => {
     setEditing(false);
   };
 
-  const handleEdit = event => {
-    event.stopPropagation();
-    setEditing(true);
+  const toggleEdit = event => {
+    if (event) {
+      event.stopPropagation();
+    }
+
+    setEditing(!editing);
   };
 
   if (editing) {
@@ -56,10 +56,12 @@ const Record = props => {
         year={year}
         condition={condition}
         conditionText={conditionText}
-        handleSubmit={handleSubmit}
+        recordIndex={recordIndex}
+        updateRecord={updateRecord}
+        toggleEdit={toggleEdit}
         handleCancel={handleCancel}
       />
-    )
+    );
   }
 
   return (
@@ -69,7 +71,7 @@ const Record = props => {
       year={year}
       condition={condition}
       conditionText={conditionText}
-      handleEdit={handleEdit}
+      toggleEdit={toggleEdit}
     />
   );
 };

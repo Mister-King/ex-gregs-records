@@ -15,13 +15,12 @@ const Button = props => {
 
   return (
     <button
-      type="button"
-      onClick={(event) => onClick(event)}
+      type={type || 'button'}
+      onClick={onClick}
       className={
         classNames(
           styles.button,
           {
-            [styles[`button--${type}`]]: type,
             [styles[`button--${variant}`]]: variant,
           },
           className,
