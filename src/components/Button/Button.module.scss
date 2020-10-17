@@ -37,7 +37,7 @@
 
 	&:focus {
 		outline: none;
-		box-shadow: 0 0 0 .2rem map-get($colours, 'focus-outline');
+		box-shadow: $focusOutline;
 	}
 
 	&:active {

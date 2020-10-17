@@ -58,9 +58,13 @@
 		font-weight: 400;
 		transition: background $transitionStyle;
 
-		&:hover,
-		&:focus {
+		&:hover {
 			background: map-get($colours, 'shade');
+		}
+
+		&:focus {
+			outline: none;
+			box-shadow: $focusOutline;
 		}
 
 		&:active {

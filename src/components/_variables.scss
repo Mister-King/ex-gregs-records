@@ -44,3 +44,4 @@ $timings: (
 $borderRadius: 10px;
 $transitionStyle: map-get($timings, 'short') ease;
 $transitionStyleLong: map-get($timings, 'long') ease;
+$focusOutline: 0 0 0 .2rem map-get($colours, 'focus-outline');
