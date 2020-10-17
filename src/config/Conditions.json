@@ -1,0 +1,22 @@
+[
+  {
+    "value": "poor",
+    "label": "Poor"
+  },
+  {
+    "value": "fair",
+    "label": "Fair"
+  },
+  {
+    "value": "good",
+    "label": "Good"
+  },
+  {
+    "value": "very_good",
+    "label": "Great"
+  },
+  {
+    "value": "mint",
+    "label": "Mint"
+  }
+]

@@ -17,7 +17,7 @@
 	display: block;
 	font-size: 1.2rem;
 	text-align: right;
-	margin-right: 10px;
+	margin-right: 6px;
 	flex-basis: 40px;
 	flex-shrink: 0;
 }
@@ -36,11 +36,10 @@
 	-webkit-appearance: none;
 
 	&--select {
-		background: map-get($colours, 'shade');
 		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z' fill='rgba(117, 117, 117, 0.999)' /%3E%3C/svg%3E");
-		background-position: right .57143rem top .71429rem;
+		background-position: right 0 top 50%;
 		background-repeat: no-repeat;
-		padding-right: 3rem;
+		padding-right: 2.5rem;
 		cursor: pointer;
 	}
 
@@ -69,7 +68,7 @@
 .error {
 	display: block;
 	width: 100%;
-	font-size: 14px;
+	font-size: 1.2rem;
 	color: map-get($colours, 'error');
 	margin-top: 5px;
 	padding-left: 20px;
@@ -86,7 +85,7 @@
 		position: absolute;
 		left: 5px;
 		top: 50%;
-		margin-top: -5px;
+		margin-top: -6px;
 	}
 
 	&:before {

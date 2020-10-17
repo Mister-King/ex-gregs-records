@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import image from '../../Logo/logo.svg';
-
-import styles from '../Record.module.scss';
 import Button from '../../Button/Button';
 import InputContainer from '../../InputContainer/InputContainer';
+import image from '../../Logo/logo.svg';
+import Conditions from '../../../config/Conditions.json';
+
+import styles from '../Record.module.scss';
 
 const RecordEdit = props => {
   const {
@@ -45,8 +46,18 @@ const RecordEdit = props => {
     });
   };
 
+  const renderConditionOpts = () => {
+    const options = Conditions.map((cond, i) => <option key={`conditionOpt-${i}`} value={cond.value}>{cond.label}</option>);
+
+    return (
+      <optgroup label="Choose a condition">
+        {options}
+      </optgroup>
+    );
+  };
+
   return (
-    <div className={styles.record}>
+    <div className={`${styles.record} ${styles['record--edit']}`}>
       <img src={recordImage} className={styles.record__image} alt={album} />
 
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -59,7 +70,6 @@ const RecordEdit = props => {
             handleInputChange={handleInputChange}
             handleInputBlur={handleInputBlur}
             error={formErrors.album}
-            errorText="Album cannot be blank."
             required
           />
 
@@ -71,37 +81,53 @@ const RecordEdit = props => {
             handleInputChange={handleInputChange}
             handleInputBlur={handleInputBlur}
             error={formErrors.artist}
-            errorText="Artist cannot be blank."
             required
           />
 
-          <InputContainer
-            containerClassName={styles.form__year}
-            label="Year"
-            name="year"
-            type="number"
-            value={record.year}
-            handleInputChange={handleInputChange}
-            handleInputBlur={handleInputBlur}
-            error={formErrors.year}
-            errorText="Year cannot be blank."
-            required
-          />
+          <div className={styles.form__inlinefields}>
+            <InputContainer
+              containerClassName={styles.form__smallfield}
+              label="Year"
+              name="year"
+              type="number"
+              value={record.year}
+              handleInputChange={handleInputChange}
+              handleInputBlur={handleInputBlur}
+              error={formErrors.year}
+              required
+            />
 
-          <Button
-            variant="secondary"
-            onClick={handleCancel}
-            className={styles.form__button}
-          >
-            Cancel
-          </Button>
+            <InputContainer
+              containerClassName={styles.form__smallfield}
+              label="Condition"
+              name="condition"
+              type="select"
+              value={record.condition}
+              handleInputChange={handleInputChange}
+              handleInputBlur={handleInputBlur}
+              error={formErrors.condition}
+              required
+            >
+              { renderConditionOpts() }
+            </InputContainer>
+          </div>
 
-          <Button
-            onClick={handleSubmit}
-            className={styles.form__button}
-          >
-            Submit
-          </Button>
+          <div className={styles.form__inlinefields}>
+            <Button
+              variant="secondary"
+              onClick={handleCancel}
+              className={styles.form__button}
+            >
+              Cancel
+            </Button>
+
+            <Button
+              onClick={handleSubmit}
+              className={styles.form__button}
+            >
+              Submit
+            </Button>
+          </div>
         </div>
 
       {/*<Badge*/}
