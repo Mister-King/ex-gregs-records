@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RecordDetails from './RecordDetails/RecordDetails';
 import RecordEdit from './RecordEdit/RecordEdit';
+import Conditions from '../../config/Conditions.json';
 
 const Record = props => {
   const {
@@ -11,27 +12,7 @@ const Record = props => {
 
   const [editing, setEditing] = useState(false);
 
-  let conditionText;
-
-  switch (condition) {
-    case 'poor':
-      conditionText = 'Poor';
-      break;
-    case 'fair':
-      conditionText = 'Fair';
-      break;
-    case 'good':
-      conditionText = 'Good';
-      break;
-    case 'very_good':
-      conditionText = 'Great';
-      break;
-    case 'mint':
-      conditionText = 'Mint';
-      break;
-    default:
-      conditionText = 'N/A';
-  }
+  const { label: conditionText } = Conditions.find(condition => condition.value === record.condition) || { label: 'N/A' };
 
   const handleCancel = () => {
     setEditing(false);
