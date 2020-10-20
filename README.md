@@ -25,9 +25,11 @@ Run the following commands from a terminal in the project's root folder:
 Of course you can also use `yarn`.
 
 # Testing
-To be continued...
+Unit tests using jest are still to be done.
 
 # Notes
+- As the project is very small, Redux is not used, however I could (and probably should) use React Context in some places to pass props (i.e. to the components in `src/components/Record`).
+
 - The error `findDOMNode is deprecated in StrictMode` is thrown from `CSSTransition` in the `react-transition-group` package. From what I've seen, there's no fix for this.
 
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
